@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Anudari Ganbaatar — DevOps & Cloud Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+<style>
+:root {
+  --bg:        #0a0a0c;
+  --bg2:       #121214;
+  --bg3:       #1a1a1e;
+  --border:    #26262b;
+  --text:      #eef0f2;
+  --muted:     #8a8a92;
+  --soft:      #b1b1b8;
+  --accent:    #6f82f1; 
+  --accent-dim: rgba(111, 130, 241, 0.1);
+  --ocean:     rgba(111, 130, 241, 0.15);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden;}
+
+body::before {
+  content:''; position:fixed; inset:0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 50px 50px; pointer-events:none; z-index:-1; opacity: 0.2;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 10%;
+  background: rgba(10, 10, 12, 0.8);
+  -webkit-backdrop-filter: blur(15px); 
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:var(--accent);text-decoration:none;font-weight:700;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;transition:0.3s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-links a, .nav-logo {
+  display: inline-block; 
+  min-height: 20px;   
+}
+
+.container{max-width:1100px;margin:0 auto;padding:0 2rem;}
+.section-pad{padding:8rem 0;border-bottom:1px solid var(--border);}
+.eyebrow{color:var(--accent);font-family:'JetBrains Mono';font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:1rem;display:block;}
+
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle, var(--ocean) 0%, transparent 70%);z-index:-1;}
+.hero-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:4rem;align-items:center;}
+.hero-name{font-size:clamp(3.5rem, 8vw, 5.5rem);font-weight:800;line-height:1;margin-bottom:1.5rem;}
+.hero-name span{color:var(--accent);}
+.hero-desc{font-size:1.1rem;color:var(--soft);margin-bottom:2.5rem;max-width:550px;}
+
+.photo-container {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
+}
+.photo-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  padding: 12px;
+  background: linear-gradient(45deg, var(--bg2), var(--accent-dim));
+  overflow: hidden;
+}
+.photo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* TECH STACK */
+
+.tech-row{display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:2rem;margin-top:2rem;}
+
+.tech-card{background:var(--bg2);padding:2rem;border-radius:12px;border:1px solid var(--border);transition:0.3s;}
+
+.tech-card:hover{border-color:var(--accent);transform:translateY(-5px);}
+
+.tech-title{font-family:'JetBrains Mono';font-size:0.8rem;color:var(--accent);margin-bottom:1.5rem;display:block;}
+
+.icon-cloud{display:flex;flex-wrap:wrap;gap:1.2rem;}
+
+.tech-item{display:flex;flex-direction:column;align-items:center;gap:0.5rem;width:60px;}
+
+.tech-item i{font-size:1.8rem;color:var(--soft);}
+
+.tech-item span{font-size:0.6rem;font-family:'JetBrains Mono';color:var(--muted);text-align:center;}
+
+/* Technical Stack Colors - Forced to be visible always */
+.devicon-python-plain { color: #3776ab !important; }
+.devicon-amazonwebservices-plain-wordmark { color: #ff9900 !important; }
+.devicon-docker-plain { color: #2496ed !important; }
+.devicon-terraform-plain { color: #7b42bc !important; }
+.devicon-bash-plain { color: #4eaa25 !important; }
+.devicon-jenkins-plain { color: #d24939 !important; }
+.devicon-azure-plain { color: #0089d6 !important; }
+.devicon-linux-plain { color: #fcc624 !important; }
+.devicon-javascript-plain { color: #f7df1e !important; }
+.devicon-java-plain { color: #007396 !important; }
+.devicon-github-original { color: #ffffff !important; }
+.devicon-gitlab-plain { color: #fc6d26 !important; }
+.devicon-mongodb-plain { color: #47a248 !important; }
+.devicon-mysql-plain { color: #4479a1 !important; }
+
+/* Keep the smooth animation for when they ARE hovered */
+.tech-item i {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tech-item:hover i {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:2rem;}
+.item-card, .tech-card {
+  background: rgba(18, 18, 20, 0.7); 
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px); 
+  border: 1px solid rgba(111, 130, 241, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.item-card:hover, .tech-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(111, 130, 241, 0.2);
+  transform: translateY(-8px) scale(1.01);
+}
+
+.card-image{width:100%;height:180px;background:var(--bg3);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;}
+.card-image img{width:100%;height:100%;object-fit:cover;opacity:0.7;}
+.card-image i{font-size:3rem;color:var(--accent);opacity:0.5;}
+
+.card-body{padding:1.5rem;flex-grow:1;}
+.card-tag{font-family:'JetBrains Mono';font-size:0.65rem;color:var(--accent);text-transform:uppercase;margin-bottom:0.5rem;display:block;}
+.card-title{font-size:1.2rem;font-weight:700;margin-bottom:0.8rem;}
+.card-text{font-size:0.9rem;color:var(--soft);margin-bottom:1.5rem;}
+.card-link{font-family:'JetBrains Mono';font-size:0.75rem;color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:0.5rem;}
+
+.btn{background:var(--accent);color:#fff;padding:1rem 2rem;border:none;border-radius:8px;font-weight:700;cursor:pointer;transition:0.3s;text-decoration:none;display:inline-block;}
+.btn:hover{box-shadow: 0 0 20px var(--accent-dim);transform:scale(1.02);}
+.btn-outline{background:transparent; color:var(--text); border:1px solid var(--border);}
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.input-group { margin-bottom: 1.5rem; }
+.input-group label { 
+  display: block; 
+  font-family: 'JetBrains Mono'; 
+  font-size: 0.7rem; 
+  color: var(--muted); 
+  margin-bottom: 0.5rem; 
+  text-transform: uppercase; 
+  letter-spacing: 1px;
+}
+.input-group input, .input-group textarea { 
+  width: 100%; 
+  background: var(--bg3); 
+  border: 1px solid var(--border); 
+  padding: 1rem; 
+  color: var(--text); 
+  border-radius: 8px; 
+  font-family: inherit;
+  transition: 0.3s;
+}
+.input-group input:focus, .input-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .hero-grid, .contact-grid {grid-template-columns: 1fr; text-align: center;}
+  .photo-container {width: 280px; height: 280px; margin-bottom: 2rem;}
+  .contact-grid { gap: 3rem; }
+}
+
+a:visited, a:active {
+  color: inherit; 
+}
+
+.item-card {
+  color: var(--text); 
+}
+
+.card-link {
+  color: var(--accent) !important; 
+  transition: all 0.3s ease;
+}
+
+.item-card:hover .card-link {
+  color: #fff !important; 
+  text-shadow: 0 0 10px var(--accent);
+  padding-left: 5px; 
+}
+a {
+  text-decoration: none !important;
+}
+
+a:hover {
+  text-decoration: none; 
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">EXE</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <div class="system-status" style="font-family:'JetBrains Mono'; font-size:0.6rem; color:#4db6ac;">
+  <span style="display:inline-block; width:8px; height:8px; background:#4db6ac; border-radius:50%; margin-right:5px; animation: pulse 2s infinite;"></span>
+  SYSTEMS_OPERATIONAL // ASIA_SOUTH_1
+</div>
+
+<style>
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+</style>
+</nav>
+
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow">DevOps & Cloud Engineer</span>
+        <h1 class="hero-name">Anudari<br><span>Ganbaatar</span></h1>
+        <p class="hero-desc">Specializing in automated infrastructure, CI/CD orchestration, and high-availability cloud systems.</p>
+        <div style="display:flex; gap:1rem; flex-wrap: wrap;">
+          <a href="cv.pdf" target="_blank" class="btn" style="background: var(--text); color: var(--bg);">Download CV</a>
+          <a href="#projects" class="btn btn-outline">Explore Work</a>
+        </div>
+      </div>
+      <div class="photo-container">
+        <div class="photo-circle">
+          <img src="profile.jpeg" alt="Anudari Ganbaatar">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section-pad">
+
+  <div class="container">
+
+    <span class="eyebrow">Capabilities</span>
+
+    <h2 style="font-size:2.5rem; margin-bottom:3rem;">Technical Stack</h2>
+
+   
+
+    <div class="tech-row">
+
+      <div class="tech-card">
+
+        <span class="tech-title">01 // Languages</span>
+
+        <div class="icon-cloud">
+
+          <div class="tech-item"><i class="devicon-python-plain"></i><span>Python</span></div>
+
+          <div class="tech-item"><i class="devicon-bash-plain"></i><span>Bash</span></div>
+
+          <div class="tech-item"><i class="devicon-c-plain"></i><span>C</span></div>
+
+          <div class="tech-item"><i class="devicon-cplusplus-plain"></i><span>C++</span></div>
+
+          <div class="tech-item"><i class="devicon-java-plain"></i><span>Java</span></div>
+
+          <div class="tech-item"><i class="devicon-javascript-plain"></i><span>JS</span></div>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="tech-card">
+
+        <span class="tech-title">02 // DevOps & Infra</span>
+
+        <div class="icon-cloud">
+
+          <div class="tech-item"><i class="devicon-terraform-plain"></i><span>Terraform</span></div>
+
+          <div class="tech-item"><i class="devicon-jenkins-plain"></i><span>Jenkins</span></div>
+
+          <div class="tech-item"><i class="devicon-docker-plain"></i><span>Docker</span></div>
+
+          <div class="tech-item"><i class="devicon-git-plain"></i><span>Git</span></div>
+
+          <div class="tech-item"><i class="devicon-github-original"></i><span>GitHub</span></div>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="tech-card">
+
+        <span class="tech-title">03 // Cloud & Systems</span>
+
+        <div class="icon-cloud">
+
+          <div class="tech-item"><i class="devicon-amazonwebservices-plain-wordmark"></i><span>AWS</span></div>
+
+          <div class="tech-item"><i class="devicon-linux-plain"></i><span>Linux</span></div>
+
+          <div class="tech-item"><i class="devicon-gitlab-plain"></i><span>GitLab</span></div>
+
+          <div class="tech-item"><i class="devicon-mongodb-plain"></i><span>MongoDB</span></div>
+
+          <div class="tech-item"><i class="devicon-mysql-plain"></i><span>MySQL</span></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="projects" class="section-pad">
+  <div class="container">
+    <span class="eyebrow">Case Studies</span>
+    <h2 style="font-size:2.5rem; margin-bottom:3rem;">Engineering Projects</h2>
+    
+    <div class="card-grid">
+      <a href="https://github.com/Anuka264/terraform-cicd-byod" target="_blank" rel="noopener" class="item-card">
+        <div class="card-image">
+          <img src="project1.jpg" alt="Project 1" onerror="this.style.display='none'">
+          <i class="devicon-terraform-plain"></i>
+        </div>
+        <div class="card-body">
+          <span class="card-tag">AWS // Jenkins // Terraform</span>
+          <h3 class="card-title">Terraform CI/CD Pipeline</h3>
+          <p class="card-text">Automated provisioning of scalable AWS resources using Jenkins pipelines and GitHub webhooks.</p>
+          <span class="card-link">View Repository ↗</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/Anuka264/SRS" target="_blank" rel="noopener" class="item-card">
+        <div class="card-image">
+          <img src="project2.jpg" alt="Project 2" onerror="this.style.display='none'">
+          <i class="devicon-python-plain"></i>
+        </div>
+        <div class="card-body">
+          <span class="card-tag">IoT // Python // OpenCV</span>
+          <h3 class="card-title">AI Home Security System</h3>
+          <p class="card-text">Edge-computing solution for real-time threat detection using TensorFlow and Raspberry Pi hardware.</p>
+          <span class="card-link">View Repository ↗</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/Anuka264/DevLearn" class="item-card">
+        <div class="card-image">
+          <img src="project3.jpg" alt="New Project" onerror="this.style.display='none'">
+          <i class="devicon-github-original"></i>
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Docker // Node.js //React + Vite // GitHub</span>
+          <h3 class="card-title">DevLearn</h3>
+          <p class="card-text">Full-stack educational tool that uses AI to help students and professionals learn faster.</p>
+          <span class="card-link">View Repository ↗</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="certificates" class="section-pad">
+  <div class="container">
+    <span class="eyebrow">Verified Skills</span>
+    <h2 style="font-size:2.5rem; margin-bottom:3rem;">Certificates</h2>
+    
+    <div class="card-grid">
+      
+      <a href="certificates/microsoft.pdf" target="_blank" rel="noopener" class="item-card">
+        <div class="card-image"><i class="devicon-azure-plain"></i></div>
+        <div class="card-body">
+          <span class="card-tag">Microsoft</span>
+          <h3 class="card-title">Azure Fundamentals</h3>
+          <p class="card-text">Foundation of cloud services and Azure architecture.</p>
+          <span class="card-link">View certificate ↗</span>
+        </div>
+      </a>
+
+      <a href="certificates/cloud.pdf" target="_blank" rel="noopener" class="item-card">
+        <div class="card-image"><i class="devicon-amazonwebservices-plain-wordmark"></i></div>
+        <div class="card-body">
+          <span class="card-tag">Gokboru Tech</span>
+          <h3 class="card-title">AWS Cloud</h3>
+          <p class="card-text">Intensive 6-week program on deployment and security.</p>
+          <span class="card-link">View certificate ↗</span>
+        </div>
+      </a>
+
+      <a href="https://www.coursera.org/account/accomplishments/specialization/5GQZUT0VI0Y2" target="_blank" rel="noopener" class="item-card">
+        <div class="card-image"><i class="devicon-linux-plain"></i></div>
+        <div class="card-body">
+          <span class="card-tag">Coursera</span>
+          <h3 class="card-title">Computer Communications</h3>
+          <p class="card-text">Specialization of System Computer Communication.</p>
+          <span class="card-link">View certificate ↗</span>
+        </div>
+      </a>
+
+      <a href="certificates/ai.pdf" target="_blank" class="item-card">
+        <div class="card-image"><i class="devicon-python-plain"></i></div>
+        <div class="card-body">
+          <span class="card-tag">Infosys</span>
+          <h3 class="card-title">Artificial Intelligence</h3>
+          <p class="card-text">Exploring AI models for image recognition.</p>
+          <span class="card-link">View certificate ↗</span>
+        </div>
+      </a>
+
+      <a href="certificates/cyber_sec.pdf" target="_blank" class="item-card">
+        <div class="card-image"><i class="devicon-bash-plain"></i></div>
+        <div class="card-body">
+          <span class="card-tag">Infosys</span>
+          <h3 class="card-title">Cyber Security</h3>
+          <p class="card-text">Learning basic network security and protection.</p>
+          <span class="card-link">View certificate ↗</span>
+        </div>
+      </a>
+
+    </div> </div>
+</section>
+
+<section id="education" class="section-pad">
+  <div class="container">
+    <span class="eyebrow">Academic Journey</span>
+    <h2 style="font-size:2.5rem; margin-bottom:3rem;">Education</h2>
+    
+    <div class="card-grid education-timeline">
+      
+      <div class="item-card education-card">
+        <div class="timeline-dot"></div>
+        <span class="card-tag" style="color:var(--accent); font-family:'JetBrains Mono';">2023 — Present</span>
+        <h3 class="card-title" style="margin-top:0.5rem;">B.Tech in CSE</h3>
+        <span class="card-sub" style="color:var(--soft); display:block; margin-bottom:1rem;">Lovely Professional University</span>
+        <p class="card-text" style="font-size:0.85rem;">Specializing in DevOps & Cloud Architecture. <br><strong>Current CGPA: 6.5</strong></p>
+      </div>
+
+      <div class="item-card education-card">
+        <div class="timeline-dot"></div>
+        <span class="card-tag" style="color:var(--accent); font-family:'JetBrains Mono';">2020 — 2021</span>
+        <h3 class="card-title" style="margin-top:0.5rem;">Senior Secondary (12th)</h3>
+        <span class="card-sub" style="color:var(--soft); display:block; margin-bottom:1rem;">105th Higher Secondary School</span>
+        <p class="card-text" style="font-size:0.85rem;">Science & Mathematics Stream. <br><strong>Result: 94.00%</strong></p>
+      </div>
+
+      <div class="item-card education-card">
+        <div class="timeline-dot"></div>
+        <span class="card-tag" style="color:var(--accent); font-family:'JetBrains Mono';">2016 — 2017</span>
+        <h3 class="card-title" style="margin-top:0.5rem;">Secondary School (10th)</h3>
+        <span class="card-sub" style="color:var(--soft); display:block; margin-bottom:1rem;">105th Secondary School</span>
+        <p class="card-text" style="font-size:0.85rem;">General Curriculum. <br><strong>Result: 99.99%</strong></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.education-timeline {
+  position: relative;
+}
+
+/* The vertical line behind the cards */
+@media (min-width: 768px) {
+  .education-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--border));
+    z-index: 0;
+  }
+}
+
+.education-card {
+  padding: 2.5rem !important;   
+  position: relative;
+  z-index: 1;
+}
+
+/* The glowing dot on the timeline */
+.timeline-dot {
+  position: absolute;
+  left: -12px;
+  top: 40px;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent);
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .timeline-dot { display: block; left: 15px; }
+  .education-card { margin-left: 40px; }
+}
+</style>
+
+<section id="contact" class="section-pad" style="border-bottom:none;">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <span class="eyebrow">Get in Touch</span>
+        <h2 style="font-size:2.5rem; margin-bottom:2rem;">Connect with Me</h2>
+        <div style="display:flex; flex-direction:column; gap:1.2rem; font-family:'JetBrains Mono';">
+          <a href="mailto:anukganbaatar48@gmail.com" style="color:var(--text); text-decoration:none;">
+            <i class="devicon-google-plain" style="margin-right:10px; color:var(--accent);"></i> anukganbaatar48@gmail.com
+          </a>
+          <a href="https://linkedin.com/in/anu-ka-8488192b1" target="_blank" rel="noopener" style="color:var(--text); text-decoration:none;">
+            <i class="devicon-linkedin-plain" style="margin-right:10px; color:var(--accent);"></i> LinkedIn
+          </a>
+          <p>📍 Jalandhar, Punjab</p>
+        </div>
+      </div>
+      
+      
+
+      <div class="item-card" style="padding:3rem; text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+  <i class="devicon-google-plain" style="font-size:3rem; color:var(--accent); margin-bottom:1.5rem;"></i>
+  <h3 class="card-title">Send me a message</h3>
+  <p class="card-text">Building scalable and secure cloud systems.</p>
+  <a href="mailto:anukganbaatar48@gmail.com" class="btn" style="width:100%;">Open Email Client</a>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<footer style="padding:4rem 0; text-align:center; background:var(--bg2);">
+  <p style="font-family:'JetBrains Mono'; font-size:0.7rem; color:var(--muted); letter-spacing:2px;">
+    &copy; 2026 // ANUDARI GANBAATAR // INFRASTRUCTURE AS CODE
+  </p>
+</footer>
+
+</body>
+</html>
